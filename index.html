@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark light" />
+<title>Cartesian Product</title>
+<link rel="stylesheet" href="https://sharmaeklavya2.github.io/funcToForm/funcToForm.css" />
+<style>
+textarea, .f2f-ostream {font-size: 1.5em;}
+.cpTable td, .cpTable th {
+    border-color: #888;
+}
+th, .cpTable td:first-child {
+    font-weight: bold;
+    background-color: var(--vlight-tint);
+    text-align: center;
+}
+</style>
+<script type="module" src="https://sharmaeklavya2.github.io/funcToForm/v2.js"></script>
+<script type="module" src="./cartprod.js"></script>
+<script type="module">
+import * as f2f from "https://sharmaeklavya2.github.io/funcToForm/v2.js";
+import showCartProd from "./cartprod.js";
+window.addEventListener('DOMContentLoaded', function() {
+    const paramGroup = new f2f.ParamGroup(undefined, [
+        new f2f.Param('sets',
+            new f2f.TextWidget({
+                converter: f2f.listConv('\n', f2f.listConv(',')),
+                type: 'textarea',
+                }),
+            {'label': '', 'description':
+                'Enter multiple lines, where each line is a comma-separated sequence of strings.'}
+        ),
+    ]);
+    f2f.createForm('myApp', paramGroup, showCartProd);
+});
+</script>
+</head>
+
+<body>
+<h1>Cartesian Product</h1>
+<p>Enter a sequence of sequence of strings.
+Get the concatenation of the strings in each entry of the cartesian product.
+</p>
+
+<p>Examples:</p>
+<ol>
+<li>Emoji:
+    <a href="?sets=👍%2C👩%2C🏃%0A🏻%2C🏼%2C🏽%2C🏾%2C🏿">skin tones</a>,
+    <a href="?sets=🧑%2C👩%2C👨%0A‍%0A⚕%EF%B8%8F%2C🌾%2C🏫%2C🎨">professions</a>,
+    <a href="?sets=🧑%2C👩%2C👨%0A🏻%2C🏼%2C🏽%2C🏾%2C🏿%0A‍%0A⚕%EF%B8%8F%2C🌾%2C🏫%2C🎨">professions and skin tones</a>.
+</li>
+<li>Kaagunita:
+    <a href="?sets=क%2Cख%2Cग%2Cघ%2Cङ%2Cच%2Cछ%2Cज%2Cझ%2Cञ%2Cट%2Cठ%2Cड%2Cढ%2Cण%2Cत%2Cथ%2Cद%2Cध%2Cन%2Cप%2Cफ%2Cब%2Cभ%2Cम%2Cय%2Cर%2Cल%2Cळ%2Cव%2Cश%2Cष%2Cस%2Cह%0Aा%2Cि%2Cी%2Cु%2Cू%2Cृ%2Cॆ%2Cे%2Cै%2Cॊ%2Cो%2Cौ%2C्%0A">devanagari full</a>,
+    <a href="?sets=क%2Cट%2Cद%2Cर%2Cळ%2Cह%0Aा%2Cि%2Cी%2Cु%2Cू%2Cृ%2Cे%2Cो%2C्%0A">devanagari</a>,
+    <a href="?sets=ಕ%2Cಗ%2Cಚ%2Cಣ%2Cದ%2Cನ%2Cಪ%2Cಮ%2Cವ%0Aಾ%2Cಿ%2Cು%2Cೃ%2Cೆ%2Cೊ%2Cೌ%2C್">kannada</a>.
+</li>
+</ol>
+
+<div id="myApp"></div>
+</body>
+</html>
